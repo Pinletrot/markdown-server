@@ -11,12 +11,12 @@ def gfmize(resource):
     if resource == 'favicon.ico':
         return ''
 
-    html_file_name = os.path.basename(converter.convert(resource))
-    if '/' in resource:
-        html_file_name = '/'.join(resource.split('/')[:-1])
-        html_file_name += '/' + html_file_name
-
-    path = os.path.join('resources/html', html_file_name)
+    html_file_name = converter.convert(resource)
+    print('[DEBUG]', resource, html_file_name)
+    path = os.path.join(html_dir, html_file_name)
+    print('[DEBUG]', path)
+    path = path[len(root_path) + 1:]
+    print('[DEBUG]', path)
 
     return static_file(path, root=root_path)
 
