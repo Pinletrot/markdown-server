@@ -12,11 +12,10 @@ def gfmize(resource):
         return ''
 
     html_file_name = converter.convert(resource)
-    print('[DEBUG]', resource, html_file_name)
     path = os.path.join(html_dir, html_file_name)
-    print('[DEBUG]', path)
-    path = path[len(root_path) + 1:]
-    print('[DEBUG]', path)
+    path = path[len(root_path):]
+    if path[0] in ['/', '\\']:
+        path = path[1:]
 
     return static_file(path, root=root_path)
 
