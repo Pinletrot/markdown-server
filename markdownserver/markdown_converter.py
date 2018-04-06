@@ -6,28 +6,7 @@ import markdown as md
 from env import css_path, ms_encoding, markdown_dir, html_dir, html_extension
 from mdx_gfm import GithubFlavoredMarkdownExtension as gfme
 
-HTML_HEADER = '''
-<html>
-<head>
-<style type='text/css'>
-<!--
-''' + codecs.open(css_path, encoding=ms_encoding, mode='r').read() + \
-'''
-//-->
-</style>
-<script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js">
-</script>
-</head>
-<body>
-<div class='markdown-body'>
-'''
-HTML_FOOTER = '''
-</div>
-</body>
-</html>
-'''
+from templates import HTML_HEADER, HTML_FOOTER
 
 
 class MarkdownConverter(object):

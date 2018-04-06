@@ -5,6 +5,9 @@ import os
 
 converter = MarkdownConverter()
 
+@route('/')
+def homepage():
+    return 'hello'
 
 @route('/<resource:re:.*\.md>')
 def gfmize(resource):
