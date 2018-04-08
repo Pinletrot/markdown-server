@@ -3,10 +3,10 @@ import os
 import sys
 
 import markdown as md
-from env import css_path, ms_encoding, markdown_dir, html_dir, html_extension
 from mdx_gfm import GithubFlavoredMarkdownExtension as gfme
 
-from templates import HTML_HEADER, HTML_FOOTER
+from env import css_path, html_dir, html_extension, markdown_dir, ms_encoding
+from templates import HTML_FOOTER, HTML_HEADER
 
 
 class MarkdownConverter(object):
@@ -15,7 +15,8 @@ class MarkdownConverter(object):
         self.html_footer = HTML_FOOTER
 
     def convert(self, src, dst=""):
-        code = md.markdown(self.read_md(src), extensions=[gfme()])
+        code = md.markdown(
+            self.read_md(src), extensions=[gfme(), 'mdx_math'])
 
         return self.write_html(code, src, dst)
 
