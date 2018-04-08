@@ -9,7 +9,7 @@ converter = MarkdownConverter()
 @route('/')
 def homepage():
     html = ''
-    for folder, _, fs in os.walk(markdown_dir):
+    for folder, _, fs in os.walk(markdown_dir, followlinks=True):
         folder = folder[len(markdown_dir) + 1:]
         for f in fs:
             if 'md' in f:
