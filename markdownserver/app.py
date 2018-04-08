@@ -8,7 +8,14 @@ converter = MarkdownConverter()
 
 @route('/')
 def homepage():
-    return 'hello'
+    html = ''
+    for folder, _, fs in os.walk(markdown_dir):
+        folder = folder[len(markdown_dir) + 1:]
+        for f in fs:
+            if 'md' in f:
+                html += f'<a href={folder}/{f}>{f}</a><br>\n'
+
+    return html
 
 
 @route('/<resource:re:.*\.md>')
@@ -26,7 +33,19 @@ def gfmize(resource):
 
 
 def main():
-    run(host=ms_host, port=ms_port, debug=ms_debug, reloader=ms_reloader)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--host', default='localhost')
+    parser.add_argument('--port', type=int, default=5901)
+    parser.add_argument('--debug', action='store_true')
+    parser.add_argument('--live_reload', action='store_true')
+
+    args = parser.parse_args()
+
+    run(host=args.host,
+        port=args.port,
+        debug=args.debug,
+        reloader=args.live_reload)
 
 
 if __name__ == '__main__':

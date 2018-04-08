@@ -6,4 +6,3 @@ with open(os.path.join(template_dir, 'footer.html')) as f:
 
 with open(os.path.join(template_dir, 'header.html')) as f:
     HTML_HEADER = f.read()
-
