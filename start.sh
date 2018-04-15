@@ -1,1 +1,1 @@
-nohup venv/bin/python markdownserver/app.py > /tmp/app.log & 
+nohup venv/bin/python src/app.py > /tmp/app.log &

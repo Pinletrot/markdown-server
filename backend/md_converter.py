@@ -5,7 +5,7 @@ import sys
 import markdown as md
 from mdx_gfm import GithubFlavoredMarkdownExtension as gfme
 
-from env import css_path, html_dir, html_extension, markdown_dir, ms_encoding
+from env import html_dir, html_extension, markdown_dir, ms_encoding
 from templates import HTML_FOOTER, HTML_HEADER
 
 
