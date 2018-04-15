@@ -1,8 +1,7 @@
 import os
 
 from bottle import route, static_file
-
-from env import temp_dir, note_dir, root_path
+from env import note_dir, root_path, temp_dir
 from utils import MarkdownConverter
 
 converter = MarkdownConverter(temp_dir, note_dir)
