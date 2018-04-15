@@ -15,7 +15,11 @@ def notes_home():
         folder = folder[len(markdown_dir) + 1:]
         for f in fs:
             if 'md' in f:
-                html += '<a href={}/{}>{}</a><br>\n'.format(folder, f, f)
+                if folder == '':
+                    path = 'notes/{}'.format(f)
+                else:
+                    path = 'notes/{}/{}'.format(folder, f)
+                html += '<a href={}>{}</a><br>\n'.format(path, f)
 
     return html
 
