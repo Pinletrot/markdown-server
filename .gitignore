@@ -1,3 +1,5 @@
 venv/
 .vscode
-resources/
+
+temp/*
+notes
