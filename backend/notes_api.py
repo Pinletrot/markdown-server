@@ -2,10 +2,10 @@ import os
 
 from bottle import route, static_file
 
-from env import html_dir, note_dir, root_path
+from env import temp_dir, note_dir, root_path
 from utils import MarkdownConverter
 
-converter = MarkdownConverter(html_dir, note_dir)
+converter = MarkdownConverter(temp_dir, note_dir)
 
 
 @route('/notes')
@@ -30,7 +30,7 @@ def notes_page(resource):
         return ''
 
     html_file_name = converter.convert(resource)
-    path = os.path.join(html_dir, html_file_name)
+    path = os.path.join(temp_dir, html_file_name)
     path = path[len(root_path):]
     if path[0] in ['/', '\\']:
         path = path[1:]

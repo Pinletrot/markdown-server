@@ -13,11 +13,11 @@ ms_encoding = 'utf-8'
 
 
 class MarkdownConverter(object):
-    def __init__(self, html_dir, note_dir):
+    def __init__(self, temp_dir, note_dir):
         self.html_header = HTML_HEADER
         self.html_footer = HTML_FOOTER
 
-        self.html_dir = html_dir
+        self.temp_dir = temp_dir
         self.note_dir = note_dir
 
     def convert(self, src, dst=""):
@@ -35,7 +35,7 @@ class MarkdownConverter(object):
         return md
 
     def write_html(self, body, file_name, dst):
-        html_path = os.path.join(self.html_dir, file_name + html_extension)
+        html_path = os.path.join(self.temp_dir, file_name + html_extension)
 
         if dst != "":
             html_path = dst
