@@ -5,24 +5,29 @@ import sys
 import markdown as md
 from mdx_gfm import GithubFlavoredMarkdownExtension as gfme
 
-from env import html_dir, html_extension, markdown_dir, ms_encoding
-from templates import HTML_FOOTER, HTML_HEADER
+from .md_templates import HTML_FOOTER, HTML_HEADER
+
+markdown_extensions = [gfme(), 'mdx_math']
+html_extension = '.html'
+ms_encoding = 'utf-8'
 
 
 class MarkdownConverter(object):
-    def __init__(self):
+    def __init__(self, html_dir, markdown_dir):
         self.html_header = HTML_HEADER
         self.html_footer = HTML_FOOTER
 
+        self.html_dir = html_dir
+        self.markdown_dir = markdown_dir
+
     def convert(self, src, dst=""):
-        code = md.markdown(
-            self.read_md(src), extensions=[gfme(), 'mdx_math'])
+        code = md.markdown(self.read_md(src), extensions=markdown_extensions)
 
         return self.write_html(code, src, dst)
 
     def read_md(self, file_name):
         with codecs.open(
-                os.path.join(markdown_dir, file_name),
+                os.path.join(self.markdown_dir, file_name),
                 encoding=ms_encoding,
                 mode='r') as md_file:
             md = md_file.read()
@@ -30,7 +35,7 @@ class MarkdownConverter(object):
         return md
 
     def write_html(self, body, file_name, dst):
-        html_path = os.path.join(html_dir, file_name + html_extension)
+        html_path = os.path.join(self.html_dir, file_name + html_extension)
 
         if dst != "":
             html_path = dst
@@ -43,8 +48,3 @@ class MarkdownConverter(object):
             f.write(self.html_header + body + self.html_footer)
 
         return html_path
-
-
-if __name__ == '__main__':
-    converter = MarkdownConverter()
-    print(converter.convert('notes/quick.md'))

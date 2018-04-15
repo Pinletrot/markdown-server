@@ -1,5 +1,4 @@
 from bottle import route, run, template, static_file
-from md_converter import MarkdownConverter
 from env import *
 import os
 

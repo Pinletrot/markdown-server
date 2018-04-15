@@ -2,8 +2,10 @@ import os
 
 from bottle import route, static_file
 
-from env import markdown_dir, html_dir, root_path
-from md_converter import MarkdownConverter
+from env import html_dir, markdown_dir, root_path
+from utils import MarkdownConverter
+
+converter = MarkdownConverter(html_dir, markdown_dir)
 
 
 @route('/notes')
@@ -13,7 +15,7 @@ def notes_home():
         folder = folder[len(markdown_dir) + 1:]
         for f in fs:
             if 'md' in f:
-                html += f'<a href={folder}/{f}>{f}</a><br>\n'
+                html += '<a href={}/{}>{}</a><br>\n'.format(folder, f, f)
 
     return html
 
@@ -23,7 +25,6 @@ def notes_page(resource):
     if resource == 'favicon.ico':
         return ''
 
-    converter = MarkdownConverter()
     html_file_name = converter.convert(resource)
     path = os.path.join(html_dir, html_file_name)
     path = path[len(root_path):]
