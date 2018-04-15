@@ -2,17 +2,17 @@ import os
 
 from bottle import route, static_file
 
-from env import html_dir, markdown_dir, root_path
+from env import html_dir, note_dir, root_path
 from utils import MarkdownConverter
 
-converter = MarkdownConverter(html_dir, markdown_dir)
+converter = MarkdownConverter(html_dir, note_dir)
 
 
 @route('/notes')
 def notes_home():
     html = ''
-    for folder, _, fs in os.walk(markdown_dir, followlinks=True):
-        folder = folder[len(markdown_dir) + 1:]
+    for folder, _, fs in os.walk(note_dir, followlinks=True):
+        folder = folder[len(note_dir) + 1:]
         for f in fs:
             if 'md' in f:
                 if folder == '':

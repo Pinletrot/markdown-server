@@ -13,12 +13,12 @@ ms_encoding = 'utf-8'
 
 
 class MarkdownConverter(object):
-    def __init__(self, html_dir, markdown_dir):
+    def __init__(self, html_dir, note_dir):
         self.html_header = HTML_HEADER
         self.html_footer = HTML_FOOTER
 
         self.html_dir = html_dir
-        self.markdown_dir = markdown_dir
+        self.note_dir = note_dir
 
     def convert(self, src, dst=""):
         code = md.markdown(self.read_md(src), extensions=markdown_extensions)
@@ -27,7 +27,7 @@ class MarkdownConverter(object):
 
     def read_md(self, file_name):
         with codecs.open(
-                os.path.join(self.markdown_dir, file_name),
+                os.path.join(self.note_dir, file_name),
                 encoding=ms_encoding,
                 mode='r') as md_file:
             md = md_file.read()
