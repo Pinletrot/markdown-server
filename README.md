@@ -1,6 +1,6 @@
 # Simple markdown server in Python
 
-Simple markdown server written in Python. 
+Simple markdown server written in Python.
 It converts your markdown file to HTML and return response as text/html.
 Forked from https://github.com/ohbarye/markdown-server .
 
@@ -45,17 +45,17 @@ $ sh startup.sh
 
 #### 3. checkout!
 
-Open [http://localhost:5901/sample.md](http://localhost:5901/sample.md) in your browser and see the effect!
+Open [http://localhost:5901/sample.md](http://localhost:5901/notes/sample.md) in your browser and see the effect!
 
 #### 4. Add more markdown files
 
 Link your makedown folder, so that we can see it!
 
 ```bash
-$ ln -s /path/to/markdown_notes_dir resources/markdown/notes
+$ ln -s /path/to/markdown_notes_dir notes/extra
 ```
 
-Open [http://localhost:5901/notes/](http://localhost:5901/notes/) and see your files!
+Open [http://localhost:5901/notes](http://localhost:5901/notes) and see your files!
 
 
 
