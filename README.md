@@ -22,32 +22,34 @@ Forked from https://github.com/ohbarye/markdown-server .
 
 ## How to start
 
-#### 1. create virtualenv and install requirements
+#### 1.  Install requirements
+
+Create virtualenv first
 
 ```bash
 $ python3 -m venv venv
 $ source venv/bin/activate
+```
+
+Install the requirements
+
+```bash
 $ pip install -r requirements.txt
 ```
 
-#### 2. start app!!
+#### 2. Start it
 
 Run the main app script in foreground
 ```bash
 $ source venv/bin/activate
-$ python markdownserver/app.py
+$ python backend/app.py
 ```
 
-or run it in background
-```bash
-$ sh startup.sh
-```
+#### 3. Checkout!
 
-#### 3. checkout!
+Open [http://localhost:5901/notes/sample.md](http://localhost:5901/notes/sample.md) in your browser and see the effect!
 
-Open [http://localhost:5901/sample.md](http://localhost:5901/notes/sample.md) in your browser and see the effect!
-
-#### 4. Add more markdown files
+#### 4. Add more markdown files!
 
 Link your makedown folder, so that we can see it!
 
@@ -55,7 +57,4 @@ Link your makedown folder, so that we can see it!
 $ ln -s /path/to/markdown_notes_dir notes/extra
 ```
 
-Open [http://localhost:5901/notes](http://localhost:5901/notes) and see your files!
-
-
-
+Open [http://localhost:5901/notes](http://localhost:5901/notes) and see all your files!
