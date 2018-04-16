@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
-        "build": "cross-env NODE_ENV=production browserify -g envify src/main.js | uglifyjs -c warnings=false -m > dist/build.js"
+        "build": "cross-env NODE_ENV=production browserify -g envify src/main.js | uglifyjs -c warnings=false -m > dist/build.js && cp src/index.html dist/index.html"
     },
     "dependencies": {
         "axios": "^0.18.0",
