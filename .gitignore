@@ -1,5 +1,7 @@
-venv/
+venv
 .vscode
+.mypy_cache
+__pycache__
 
-temp/*
+temp
 notes
