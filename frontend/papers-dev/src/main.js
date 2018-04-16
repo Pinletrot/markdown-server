@@ -1,23 +1,22 @@
 import Vue from 'vue'
 import axios from 'axios'
+import pitem from './components/pitem.vue'
 
-Vue.component('paper-item', {
-  props: ['title', 'url'],
-  template: '<p>{{ title }} - {{ url }}</p>'
-})
 
 new Vue({
   el: '#app',
   data: {
     papers: [{
-      title: 'data not loaded from server',
+      title: 'initial',
       url: '',
       uid: 0
     }],
   },
+  components: {
+    pitem
+  },
   created: function () {
     var vm = this;
-    console.log('asdad');
     axios.get(
       '/papers/get_all'
     ).then(function (response) {
