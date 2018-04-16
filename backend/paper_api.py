@@ -4,10 +4,10 @@ import logging
 import requests
 
 from bottle import Response, get, post, request, response, route, static_file
-from env import temp_dir, root_path
+from env import data_dir, root_path
 from utils import get_db
 
-_db = get_db(os.path.join(temp_dir, 'papers.db'))
+_db = get_db(os.path.join(data_dir, 'papers.db'))
 
 papers_static_path = os.path.join(root_path, 'frontend/papers-dev/dist')
 
