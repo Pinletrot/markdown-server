@@ -12,6 +12,7 @@
     "author": "Pinlebot",
     "license": "MIT",
     "dependencies": {
+        "@types/promise": "^7.1.30",
         "axios": "^0.18.0",
         "vue": "^2.5.2",
         "vue-class-component": "^6.0.0",

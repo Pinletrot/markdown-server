@@ -21,7 +21,7 @@ const app = new Vue({
     ).then((response) => {
       vm.papers = response.data.papers;
     }).catch((error) => {
-      console.log('error @ Vue created: ', error);
+      // console.log('error @ Vue created: ', error);
     });
   },
 });
