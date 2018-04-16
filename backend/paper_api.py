@@ -1,11 +1,14 @@
 import json
 import os
+import logging
 
 from bottle import Response, get, post, request, response, route, static_file
-from env import temp_dir
+from env import temp_dir, root_path
 from utils import get_db
 
 _db = get_db(os.path.join(temp_dir, 'papers.db'))
+
+papers_static_path = os.path.join(root_path, 'frontend/papers-dev/dist')
 
 
 @post('/papers/add')
@@ -28,3 +31,15 @@ def get_all_paper():
     resp = {'papers': papers}
     response.content_type = 'application/json'
     return json.dumps(resp)
+
+
+@route('/papers')
+def papers_home():
+    logging.debug(os.path.join(papers_static_path, 'index.html'))
+
+    return static_file('index.html', root=papers_static_path)
+
+
+@route('/papers/<filename>')
+def papers_file(filename):
+    return static_file(filename, root=papers_static_path)
