@@ -1,10 +1,12 @@
 <template>
+<div>
   <p>{{ title }} - {{ url }}</p>
+</div>
 </template>
 
-<script>
-import Vue from "vue";
+<script lang='ts'>
+import Vue from 'vue';
 export default Vue.extend({
-  props: ["title", "url"]
+  props: ['title', 'url']
 });
 </script>

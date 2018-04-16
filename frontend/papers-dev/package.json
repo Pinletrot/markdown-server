@@ -5,7 +5,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "webpack",
+        "build": "cp src/index.html dist/ && webpack",
+        "watch": "onchange 'src/**/*'  -- npm run build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
@@ -14,6 +15,7 @@
     "dependencies": {
         "@types/promise": "^7.1.30",
         "axios": "^0.18.0",
+        "onchange": "^3.3.0",
         "vue": "^2.5.2",
         "vue-class-component": "^6.0.0",
         "vue-property-decorator": "^6.0.0",

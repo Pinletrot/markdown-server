@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Vue from 'vue';
+import pbar from './components/pbar.vue';
 import pitem from './components/pitem.vue';
 
 const app = new Vue({
@@ -12,6 +13,7 @@ const app = new Vue({
     }],
   },
   components: {
+    pbar,
     pitem,
   },
   created() {

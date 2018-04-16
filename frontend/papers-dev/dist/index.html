@@ -8,6 +8,7 @@
 
 <body>
   <div id="app">
+    <pbar></pbar>
     <pitem v-for="paper in papers" v-bind:key="paper.uid" v-bind:title="paper.title" v-bind:url="paper.url"></pitem>
   </div>
   <script src="papers/build.js"></script>
