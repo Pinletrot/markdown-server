@@ -6,20 +6,24 @@
 </template>
 
 <script lang='ts'>
+import axios from "axios";
 import Vue from "vue";
 import { translate } from "../translators/index";
 
 export default Vue.extend({
   data: () => {
-    return { url: "init" };
+    return { url: "https://arxiv.org/abs/1804.03228" };
   },
   methods: {
     submit_paper: function() {
-      console.log(124);
-      console.log(this.url);
-      const item = translate(this.url);
-      item.then(res => {
-        console.log(res);
+      const proxy_prefix = "/papers/fetch?url=";
+      const proxied_url = proxy_prefix + this.url;
+
+      translate(proxied_url).then(paperItem => {
+        paperItem.url = paperItem.url.replace(proxy_prefix, "");
+        axios.post("/papers/add", paperItem).then(res_post => {
+          console.log(res_post);
+        });
       });
     }
   }

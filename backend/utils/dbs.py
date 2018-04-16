@@ -45,6 +45,8 @@ class PaperDB:
             'tags': []
         })
 
+        return True
+
     def get_all_papers(self) -> List[Dict]:
         q = Query()
         docs = self._db.search(q.type == 'paper_item')

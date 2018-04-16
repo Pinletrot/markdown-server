@@ -1,6 +1,7 @@
 import json
 import os
 import logging
+import requests
 
 from bottle import Response, get, post, request, response, route, static_file
 from env import temp_dir, root_path
@@ -43,3 +44,16 @@ def papers_home():
 @route('/papers/<filename>')
 def papers_file(filename):
     return static_file(filename, root=papers_static_path)
+
+
+@get('/papers/fetch')
+def papers_fetch_remote_url():
+
+    data = request.query.decode()
+    try:
+        url = request.query['url']
+        r = requests.get(url)
+        resp = Response(body=r.text, status=r.status_code)
+        return resp
+    except Exception:
+        return Response(body='', status=400)

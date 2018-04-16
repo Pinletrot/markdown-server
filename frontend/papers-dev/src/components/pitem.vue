@@ -1,6 +1,6 @@
 <template>
 <div>
-  <p>{{ title }} - {{ url }} asdasjdaj</p>
+  <p>{{ title }} - {{ url }}</p>
 </div>
 </template>
 
