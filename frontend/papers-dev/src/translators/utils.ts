@@ -1,11 +1,3 @@
-export class PaperItem {
-    public title: string = '';
-    public url: string = '';
-    public pdfUrl: string = '';
-    public date: string = '';
-    public authors: string[] = [];
-}
-
 export function xpathText(doc: Document | Node, expr: string, ns?: any, delimiter?: string) {
     const result: any[] = xpathMatch(doc, expr, ns);
     const strings = [];

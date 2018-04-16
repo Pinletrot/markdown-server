@@ -5,7 +5,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "cp src/index.html dist/ && webpack",
+        "build": "cp src/index.html dist/ ; webpack",
         "watch": "onchange 'src/**/*'  -- npm run build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
