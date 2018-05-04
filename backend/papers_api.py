@@ -1,11 +1,12 @@
 import json
-import os
 import logging
-import requests
+import os
 
+import requests
 from bottle import Response, get, post, request, response, route, static_file
-from env import data_dir, root_path
+
 from utils import get_db
+from utils.env import data_dir, root_path
 
 _db = get_db(os.path.join(data_dir, 'papers.db'))
 
@@ -13,7 +14,7 @@ papers_static_path = os.path.join(root_path, 'frontend/papers-dev/dist')
 
 
 @post('/papers/add')
-def add_paper():
+def papers_add():
     body = request.body.read()
     body = json.loads(body)
     if _db.add_paper(body):
@@ -27,7 +28,7 @@ def add_paper():
 
 
 @get('/papers/get_all')
-def get_all_paper():
+def papers_get_all():
     papers = _db.get_all_papers()
     resp = {'papers': papers}
     response.content_type = 'application/json'
@@ -48,8 +49,7 @@ def papers_file(filename):
 
 @get('/papers/fetch')
 def papers_fetch_remote_url():
-
-    data = request.query.decode()
+    # data = request.query.decode()
     try:
         url = request.query['url']
         r = requests.get(url)
@@ -57,3 +57,8 @@ def papers_fetch_remote_url():
         return resp
     except Exception:
         return Response(body='', status=400)
+
+
+dummy = 'papers'
+
+__all__ = ['papers_add', 'papers_get_all', 'papers_home', 'papers_fetch_remote_url', 'dummy']

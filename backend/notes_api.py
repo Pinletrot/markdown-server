@@ -1,8 +1,9 @@
 import os
 
 from bottle import route, static_file
-from env import note_dir, root_path, data_dir
+
 from utils import MarkdownConverter
+from utils.env import note_dir, root_path, data_dir
 
 converter = MarkdownConverter(data_dir, note_dir)
 
@@ -35,3 +36,8 @@ def notes_page(resource):
         path = path[1:]
 
     return static_file(path, root=root_path)
+
+
+dummy = 'notes'
+
+__all__ = ['notes_home', 'notes_page', 'dummy']

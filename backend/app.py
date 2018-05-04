@@ -1,10 +1,10 @@
 import logging
-import os
 
-from bottle import route, run, static_file, template
-from env import *
-from notes_api import notes_home, notes_page
-from paper_api import add_paper
+from bottle import run, route
+
+import notes_api
+import papers_api
+import slides_api
 
 
 def main():
@@ -26,6 +26,17 @@ def main():
         port=args.port,
         debug=args.debug,
         reloader=args.live_reload)
+
+
+@route('/')
+def homepage():
+    dummies = [notes_api.dummy, papers_api.dummy, slides_api.dummy]
+
+    html = ''
+    for dummy in dummies:
+        html += f'<p><a href="/{dummy}">{dummy}</a><p>'
+
+    return html
 
 
 if __name__ == '__main__':

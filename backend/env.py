@@ -1,5 +1,0 @@
-import os
-
-root_path = '/'.join(os.path.dirname(__file__).split('/')[:-1])
-note_dir = os.path.join(root_path, 'notes')
-data_dir = os.path.join(root_path, 'data')

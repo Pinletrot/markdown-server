@@ -4,4 +4,6 @@ venv
 __pycache__
 
 temp
-notes
+data/notes
+data/slides
+papers.db
