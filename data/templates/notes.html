@@ -1,0 +1,17 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.1/markdown-it.js"></script>
+    <title>{{ title }}</title>
+</head>
+<body style="max-width:50%;margin:5% auto !important;float: none !important">
+<div class="markdown-body" id="content">{{ text }}</div>
+</body>
+
+<script>
+    var md = window.markdownit();
+    var div_content = document.getElementById('content');
+    div_content.innerHTML = md.render(div_content.innerHTML);
+</script>
+</html>

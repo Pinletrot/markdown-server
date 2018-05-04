@@ -3,7 +3,7 @@ import os
 
 from bottle import route
 
-from utils import remark
+from utils import slides_get_html
 from utils.env import slide_dir
 
 
@@ -23,13 +23,16 @@ def slides_home():
     return html
 
 
-@route('/slides/<resource:re:.*\.md>')
-def slides_page(resource):
-    md_fn = os.path.join(slide_dir, resource)
+@route('/slides/<fn:re:.*\.md>')
+def slides_page(fn):
+    if fn == 'favicon.ico':
+        return ''
+
+    md_fn = os.path.join(slide_dir, fn)
 
     logging.debug('/slides: ' + md_fn)
 
-    return remark.get_html(md_fn)
+    return slides_get_html(md_fn)
 
 
 dummy = 'slides'

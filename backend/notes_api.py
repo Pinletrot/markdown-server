@@ -1,11 +1,10 @@
+import logging
 import os
 
-from bottle import route, static_file
+from bottle import route
 
-from utils import MarkdownConverter
-from utils.env import note_dir, root_path, data_dir
-
-converter = MarkdownConverter(data_dir, note_dir)
+from utils import notes_get_html
+from utils.env import note_dir
 
 
 @route('/notes')
@@ -24,18 +23,16 @@ def notes_home():
     return html
 
 
-@route('/notes/<resource:re:.*\.md>')
-def notes_page(resource):
-    if resource == 'favicon.ico':
+@route('/notes/<fn:re:.*\.md>')
+def notes_page(fn):
+    if fn == 'favicon.ico':
         return ''
 
-    html_file_name = converter.convert(resource)
-    path = os.path.join(data_dir, html_file_name)
-    path = path[len(root_path):]
-    if path[0] in ['/', '\\']:
-        path = path[1:]
+    md_fn = os.path.join(note_dir, fn)
 
-    return static_file(path, root=root_path)
+    logging.debug('/slides: ' + md_fn)
+
+    return notes_get_html(md_fn)
 
 
 dummy = 'notes'

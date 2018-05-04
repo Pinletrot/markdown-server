@@ -1,7 +1,5 @@
 bottle==0.12.8
-Markdown==2.6.11
-py-gfm==0.1.3
-python-markdown-math==0.3
 ujson==1.35
 tinydb==3.8.1
 requests==2.18.4
+pystache==0.5.4

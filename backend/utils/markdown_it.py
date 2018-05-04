@@ -5,17 +5,17 @@ import pystache
 
 from utils.env import template_dir
 
-_template_fn = os.path.join(template_dir, 'slides.html')
+_template_fn = os.path.join(template_dir, 'notes.html')
 
 
-def slides_get_html(slide_fn):
+def notes_get_html(note_fn):
     with codecs.open(_template_fn) as f:
         template_text = f.read()
 
-    with open(slide_fn, 'r') as f:
+    with open(note_fn, 'r') as f:
         text = f.read()
 
     return pystache.render(template_text, {
         'text': text.lstrip(),
-        'title': slide_fn.rsplit('/', 1)[1]
+        'title': note_fn.rsplit('/', 1)[1]
     })

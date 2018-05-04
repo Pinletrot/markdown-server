@@ -42,14 +42,16 @@ def papers_home():
     return static_file('index.html', root=papers_static_path)
 
 
-@route('/papers/<filename>')
-def papers_file(filename):
-    return static_file(filename, root=papers_static_path)
+@route('/papers/<fn>')
+def papers_file(fn):
+    if fn == 'favicon.ico':
+        return ''
+
+    return static_file(fn, root=papers_static_path)
 
 
 @get('/papers/fetch')
 def papers_fetch_remote_url():
-    # data = request.query.decode()
     try:
         url = request.query['url']
         r = requests.get(url)
